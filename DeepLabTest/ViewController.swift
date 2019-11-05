@@ -9,7 +9,6 @@
 import Cocoa
 import CoreML
 import Vision
-import CoreGraphics
 
 //https://github.com/tensorflow/models/blob/master/research/deeplab/utils/get_dataset_colormap.py
 

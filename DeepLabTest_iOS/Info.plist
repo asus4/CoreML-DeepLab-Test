@@ -60,5 +60,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For DeepLab segmentation</string>
+	<key>NSCameraUsageDescription</key>
+	<string>For DeepLab segmentation</string>
 </dict>
 </plist>
