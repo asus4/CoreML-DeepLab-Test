@@ -19,6 +19,8 @@
 		787C4BC62371D6AB00D2CAD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 787C4BC52371D6AB00D2CAD8 /* Assets.xcassets */; };
 		787C4BC92371D6AB00D2CAD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787C4BC72371D6AB00D2CAD8 /* LaunchScreen.storyboard */; };
 		787C4BCE2371DC8600D2CAD8 /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 787C4B992371C16B00D2CAD8 /* DeepLabV3.mlmodel */; };
+		787C4BD12371DDF400D2CAD8 /* ColorTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787C4BD02371DDF400D2CAD8 /* ColorTables.swift */; };
+		787C4BD22371DDF400D2CAD8 /* ColorTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787C4BD02371DDF400D2CAD8 /* ColorTables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,7 @@
 		787C4BC52371D6AB00D2CAD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		787C4BC82371D6AB00D2CAD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		787C4BCA2371D6AB00D2CAD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		787C4BD02371DDF400D2CAD8 /* ColorTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,7 @@
 		787C4B7D2371C03600D2CAD8 = {
 			isa = PBXGroup;
 			children = (
+				787C4BCF2371DDC500D2CAD8 /* Source */,
 				787C4B992371C16B00D2CAD8 /* DeepLabV3.mlmodel */,
 				787C4B882371C03600D2CAD8 /* DeepLabTest */,
 				787C4BBB2371D6AA00D2CAD8 /* DeepLabTest_iOS */,
@@ -102,6 +106,14 @@
 				787C4BCA2371D6AB00D2CAD8 /* Info.plist */,
 			);
 			path = DeepLabTest_iOS;
+			sourceTree = "<group>";
+		};
+		787C4BCF2371DDC500D2CAD8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				787C4BD02371DDF400D2CAD8 /* ColorTables.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +220,7 @@
 				787C4B9A2371C16C00D2CAD8 /* DeepLabV3.mlmodel in Sources */,
 				787C4B8C2371C03600D2CAD8 /* ViewController.swift in Sources */,
 				787C4B8A2371C03600D2CAD8 /* AppDelegate.swift in Sources */,
+				787C4BD12371DDF400D2CAD8 /* ColorTables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +230,7 @@
 			files = (
 				787C4BC12371D6AA00D2CAD8 /* ViewController.swift in Sources */,
 				787C4BBD2371D6AA00D2CAD8 /* AppDelegate.swift in Sources */,
+				787C4BD22371DDF400D2CAD8 /* ColorTables.swift in Sources */,
 				787C4BBF2371D6AA00D2CAD8 /* SceneDelegate.swift in Sources */,
 				787C4BCE2371DC8600D2CAD8 /* DeepLabV3.mlmodel in Sources */,
 			);
