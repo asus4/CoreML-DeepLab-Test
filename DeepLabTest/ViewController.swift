@@ -231,7 +231,7 @@ class ViewController: NSViewController {
             return
         }
         
-        // 
+        //
         let width = 513
         let height = 513
         var data: [UInt8] = [UInt8](repeating: 255, count: width * height * 4)
