@@ -12,23 +12,21 @@ import CoreML
 import Vision
 import MetalKit
 
-public protocol UnityCoreMLResultDelegate: AnyObject {
+@objc public protocol UnityCoreMLResultDelegate: AnyObject {
     func onUnityCoreMLResult(array:MLMultiArray)
 }
 
-public struct UnityCoreML {
+@objc public class UnityCoreML: NSObject {
     
     public var delegate: UnityCoreMLResultDelegate?
     public var scaleOption: VNImageCropAndScaleOption = .centerCrop
     
     private var model: VNCoreMLModel?
-    
-    init() {
-    }
+
     
     /** Load *.mlmodel file
      */
-    public mutating func loadModel(_ url: URL) {
+    public func loadModel(_ url: URL) {
         guard let mlmodel = try? MLModel(contentsOf: url),
             let model = try? VNCoreMLModel(for: mlmodel) else {
             fatalError()

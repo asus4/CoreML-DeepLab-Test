@@ -36,9 +36,7 @@ class ViewController: UIViewController {
     }
     
     func processImage(_ url: URL) {
-//        unity.predict(url: url)
-        unity.predict(metalFileUrl: url)
-
+        unity.predict(url: url)
         
         guard let data = try? Data(contentsOf: url, options: .mappedIfSafe) else {
             return

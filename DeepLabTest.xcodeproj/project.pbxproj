@@ -23,6 +23,8 @@
 		787C4BD22371DDF400D2CAD8 /* ColorTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787C4BD02371DDF400D2CAD8 /* ColorTables.swift */; };
 		78B054372372D06E003B6B99 /* UnityCoreML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B054362372D06E003B6B99 /* UnityCoreML.swift */; };
 		78B054382372D07C003B6B99 /* UnityCoreML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B054362372D06E003B6B99 /* UnityCoreML.swift */; };
+		78B0543C2372F975003B6B99 /* UnityCoreMLPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B0543B2372F974003B6B99 /* UnityCoreMLPlugin.mm */; };
+		78B0543D2372F975003B6B99 /* UnityCoreMLPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B0543B2372F974003B6B99 /* UnityCoreMLPlugin.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,12 @@
 		787C4BCA2371D6AB00D2CAD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		787C4BD02371DDF400D2CAD8 /* ColorTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTables.swift; sourceTree = "<group>"; };
 		78B054362372D06E003B6B99 /* UnityCoreML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityCoreML.swift; sourceTree = "<group>"; };
+		78B054392372F974003B6B99 /* UnityCoreML-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnityCoreML-Bridging-Header.h"; sourceTree = "<group>"; };
+		78B0543B2372F974003B6B99 /* UnityCoreMLPlugin.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = UnityCoreMLPlugin.mm; sourceTree = "<group>"; };
+		78B05440237301B6003B6B99 /* IUnityInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityInterface.h; sourceTree = "<group>"; };
+		78B05442237301B6003B6B99 /* IUnityGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityGraphics.h; sourceTree = "<group>"; };
+		78B05443237301B6003B6B99 /* IUnityRenderingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityRenderingExtensions.h; sourceTree = "<group>"; };
+		78B05444237301B6003B6B99 /* IUnityGraphicsMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityGraphicsMetal.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,7 @@
 		787C4B7D2371C03600D2CAD8 = {
 			isa = PBXGroup;
 			children = (
+				78B0543E237301B6003B6B99 /* Include */,
 				787C4BCF2371DDC500D2CAD8 /* Source */,
 				787C4B992371C16B00D2CAD8 /* DeepLabV3.mlmodel */,
 				787C4B882371C03600D2CAD8 /* DeepLabTest_macOS */,
@@ -116,8 +125,29 @@
 			children = (
 				787C4BD02371DDF400D2CAD8 /* ColorTables.swift */,
 				78B054362372D06E003B6B99 /* UnityCoreML.swift */,
+				78B0543B2372F974003B6B99 /* UnityCoreMLPlugin.mm */,
+				78B054392372F974003B6B99 /* UnityCoreML-Bridging-Header.h */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		78B0543E237301B6003B6B99 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				78B0543F237301B6003B6B99 /* Unity */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		78B0543F237301B6003B6B99 /* Unity */ = {
+			isa = PBXGroup;
+			children = (
+				78B05440237301B6003B6B99 /* IUnityInterface.h */,
+				78B05442237301B6003B6B99 /* IUnityGraphics.h */,
+				78B05443237301B6003B6B99 /* IUnityRenderingExtensions.h */,
+				78B05444237301B6003B6B99 /* IUnityGraphicsMetal.h */,
+			);
+			path = Unity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,9 +199,11 @@
 				TargetAttributes = {
 					787C4B852371C03600D2CAD8 = {
 						CreatedOnToolsVersion = 11.2;
+						LastSwiftMigration = 1120;
 					};
 					787C4BB92371D6A900D2CAD8 = {
 						CreatedOnToolsVersion = 11.2;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -223,6 +255,7 @@
 			files = (
 				787C4B9A2371C16C00D2CAD8 /* DeepLabV3.mlmodel in Sources */,
 				787C4B8C2371C03600D2CAD8 /* ViewController.swift in Sources */,
+				78B0543C2372F975003B6B99 /* UnityCoreMLPlugin.mm in Sources */,
 				78B054372372D06E003B6B99 /* UnityCoreML.swift in Sources */,
 				787C4B8A2371C03600D2CAD8 /* AppDelegate.swift in Sources */,
 				787C4BD12371DDF400D2CAD8 /* ColorTables.swift in Sources */,
@@ -239,6 +272,7 @@
 				78B054382372D07C003B6B99 /* UnityCoreML.swift in Sources */,
 				787C4BBF2371D6AA00D2CAD8 /* SceneDelegate.swift in Sources */,
 				787C4BCE2371DC8600D2CAD8 /* DeepLabV3.mlmodel in Sources */,
+				78B0543D2372F975003B6B99 /* UnityCoreMLPlugin.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +340,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -326,6 +361,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = UnityCoreML;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -366,6 +402,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -379,6 +416,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_MODULE_NAME = UnityCoreML;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -389,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DeepLabTest_macOS/DeepLabTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -401,6 +440,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "asus4.DeepLabTest-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/UnityCoreML-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -409,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DeepLabTest_macOS/DeepLabTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -421,6 +463,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "asus4.DeepLabTest-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/UnityCoreML-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -429,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28KUHZR8X3;
 				INFOPLIST_FILE = DeepLabTest_iOS/Info.plist;
@@ -440,6 +484,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "asus4.DeepLabTest-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/UnityCoreML-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,6 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28KUHZR8X3;
 				INFOPLIST_FILE = DeepLabTest_iOS/Info.plist;
@@ -460,6 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "asus4.DeepLabTest-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/UnityCoreML-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
