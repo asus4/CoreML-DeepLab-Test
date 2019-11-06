@@ -18,15 +18,16 @@ import MetalKit
 
 @objc public class UnityCoreML: NSObject {
     
-    public var delegate: UnityCoreMLResultDelegate?
+    @objc public var delegate: UnityCoreMLResultDelegate?
     public var scaleOption: VNImageCropAndScaleOption = .centerCrop
     
     private var model: VNCoreMLModel?
-
+        
+    private let queue = DispatchQueue(label: "asus4.unitycoreml")
     
     /** Load *.mlmodel file
      */
-    public func loadModel(_ url: URL) {
+    @objc public func loadModel(_ url: URL) {
         guard let mlmodel = try? MLModel(contentsOf: url),
             let model = try? VNCoreMLModel(for: mlmodel) else {
             fatalError()
@@ -37,14 +38,14 @@ import MetalKit
     
     /** Predict from image url
      */
-    public func predict(url: URL) {
+    @objc public func predict(url: URL) {
         let handler = VNImageRequestHandler(url: url)
         self.predict(handler: handler)
     }
 
     /** Predict from raw image buffer (for Unity plugin)
      */
-    public func predict(texture: MTLTexture) {
+    @objc public func predict(texture: MTLTexture) {
         
         // https://ringsbell.blog.fc2.com/blog-entry-1319.html
         guard let image = CIImage(mtlTexture: texture, options: nil) else {
@@ -65,7 +66,9 @@ import MetalKit
         let request = VNCoreMLRequest(model: model, completionHandler: self.onVisionRequestComplete)
         request.imageCropAndScaleOption = self.scaleOption
         
-        try? handler.perform([request])
+        queue.async {
+            try? handler.perform([request])
+        }
     }
     
     private func onVisionRequestComplete(request: VNRequest, error: Error?) {

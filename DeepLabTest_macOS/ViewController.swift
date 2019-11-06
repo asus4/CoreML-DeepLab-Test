@@ -66,8 +66,10 @@ extension ViewController: UnityCoreMLResultDelegate {
         guard let image = ColorTables.toDeepLabV3(array, width: 513, height: 513) else {
             return
         }
-        
         let size = NSSize(width: image.width, height: image.height)
-        self.resultImageView.image = NSImage(cgImage: image, size: size)
+        
+        DispatchQueue.main.async {
+            self.resultImageView.image = NSImage(cgImage: image, size: size)
+        }
     }
 }

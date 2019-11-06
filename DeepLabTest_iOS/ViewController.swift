@@ -74,7 +74,9 @@ extension ViewController: UnityCoreMLResultDelegate {
             return
         }
         
-        self.resultImageView.image = UIImage(cgImage: image)
+        DispatchQueue.main.async {
+            self.resultImageView.image = UIImage(cgImage: image)
+        }        
     }
 }
 
