@@ -22,7 +22,6 @@ import MetalKit
     public var scaleOption: VNImageCropAndScaleOption = .centerCrop
     
     private var model: VNCoreMLModel?
-        
     private let queue = DispatchQueue(label: "asus4.unitycoreml")
     
     /** Load *.mlmodel file

@@ -25,6 +25,9 @@
 		78B054382372D07C003B6B99 /* UnityCoreML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B054362372D06E003B6B99 /* UnityCoreML.swift */; };
 		78B0543C2372F975003B6B99 /* UnityCoreMLPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B0543B2372F974003B6B99 /* UnityCoreMLPlugin.mm */; };
 		78B0543D2372F975003B6B99 /* UnityCoreMLPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B0543B2372F974003B6B99 /* UnityCoreMLPlugin.mm */; };
+		78B0545F23731B2A003B6B99 /* ColorTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787C4BD02371DDF400D2CAD8 /* ColorTables.swift */; };
+		78B0546023731B2E003B6B99 /* UnityCoreML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B054362372D06E003B6B99 /* UnityCoreML.swift */; };
+		78B0546123731B33003B6B99 /* UnityCoreMLPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78B0543B2372F974003B6B99 /* UnityCoreMLPlugin.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,8 @@
 		78B05442237301B6003B6B99 /* IUnityGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityGraphics.h; sourceTree = "<group>"; };
 		78B05443237301B6003B6B99 /* IUnityRenderingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityRenderingExtensions.h; sourceTree = "<group>"; };
 		78B05444237301B6003B6B99 /* IUnityGraphicsMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityGraphicsMetal.h; sourceTree = "<group>"; };
+		78B0545923731B14003B6B99 /* UnityCoreMLPlungin.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnityCoreMLPlungin.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B0545B23731B14003B6B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		78B0545623731B14003B6B99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +92,7 @@
 				787C4B992371C16B00D2CAD8 /* DeepLabV3.mlmodel */,
 				787C4B882371C03600D2CAD8 /* DeepLabTest_macOS */,
 				787C4BBB2371D6AA00D2CAD8 /* DeepLabTest_iOS */,
+				78B0545A23731B14003B6B99 /* UnityCoreMLPlugin */,
 				787C4B872371C03600D2CAD8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +102,7 @@
 			children = (
 				787C4B862371C03600D2CAD8 /* DeepLabTest_macOS.app */,
 				787C4BBA2371D6A900D2CAD8 /* DeepLabTest_iOS.app */,
+				78B0545923731B14003B6B99 /* UnityCoreMLPlungin.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,6 +164,14 @@
 			path = Unity;
 			sourceTree = "<group>";
 		};
+		78B0545A23731B14003B6B99 /* UnityCoreMLPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				78B0545B23731B14003B6B99 /* Info.plist */,
+			);
+			path = UnityCoreMLPlugin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -187,6 +209,23 @@
 			productReference = 787C4BBA2371D6A900D2CAD8 /* DeepLabTest_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		78B0545823731B14003B6B99 /* UnityCoreMLPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78B0545E23731B14003B6B99 /* Build configuration list for PBXNativeTarget "UnityCoreMLPlugin" */;
+			buildPhases = (
+				78B0545523731B14003B6B99 /* Sources */,
+				78B0545623731B14003B6B99 /* Frameworks */,
+				78B0545723731B14003B6B99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnityCoreMLPlugin;
+			productName = UnityCoreMLPlugin;
+			productReference = 78B0545923731B14003B6B99 /* UnityCoreMLPlungin.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +244,9 @@
 						CreatedOnToolsVersion = 11.2;
 						LastSwiftMigration = 1120;
 					};
+					78B0545823731B14003B6B99 = {
+						CreatedOnToolsVersion = 11.2;
+					};
 				};
 			};
 			buildConfigurationList = 787C4B812371C03600D2CAD8 /* Build configuration list for PBXProject "DeepLabTest" */;
@@ -222,6 +264,7 @@
 			targets = (
 				787C4B852371C03600D2CAD8 /* DeepLabTest_macOS */,
 				787C4BB92371D6A900D2CAD8 /* DeepLabTest_iOS */,
+				78B0545823731B14003B6B99 /* UnityCoreMLPlugin */,
 			);
 		};
 /* End PBXProject section */
@@ -243,6 +286,13 @@
 				787C4BC92371D6AB00D2CAD8 /* LaunchScreen.storyboard in Resources */,
 				787C4BC62371D6AB00D2CAD8 /* Assets.xcassets in Resources */,
 				787C4BC42371D6AA00D2CAD8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78B0545723731B14003B6B99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +323,16 @@
 				787C4BBF2371D6AA00D2CAD8 /* SceneDelegate.swift in Sources */,
 				787C4BCE2371DC8600D2CAD8 /* DeepLabV3.mlmodel in Sources */,
 				78B0543D2372F975003B6B99 /* UnityCoreMLPlugin.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78B0545523731B14003B6B99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B0546123731B33003B6B99 /* UnityCoreMLPlugin.mm in Sources */,
+				78B0545F23731B2A003B6B99 /* ColorTables.swift in Sources */,
+				78B0546023731B2E003B6B99 /* UnityCoreML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = Include/;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -413,6 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = Include/;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -514,6 +576,38 @@
 			};
 			name = Release;
 		};
+		78B0545C23731B14003B6B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 28KUHZR8X3;
+				INFOPLIST_FILE = UnityCoreMLPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = asus4.UnityCoreMLPlugin;
+				PRODUCT_NAME = UnityCoreMLPlungin;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		78B0545D23731B14003B6B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 28KUHZR8X3;
+				INFOPLIST_FILE = UnityCoreMLPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = asus4.UnityCoreMLPlugin;
+				PRODUCT_NAME = UnityCoreMLPlungin;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -540,6 +634,15 @@
 			buildConfigurations = (
 				787C4BCC2371D6AB00D2CAD8 /* Debug */,
 				787C4BCD2371D6AB00D2CAD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78B0545E23731B14003B6B99 /* Build configuration list for PBXNativeTarget "UnityCoreMLPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78B0545C23731B14003B6B99 /* Debug */,
+				78B0545D23731B14003B6B99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
