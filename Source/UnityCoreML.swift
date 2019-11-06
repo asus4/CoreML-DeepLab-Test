@@ -7,8 +7,10 @@
 //
 
 
+import CoreImage
 import CoreML
 import Vision
+import MetalKit
 
 public protocol UnityCoreMLResultDelegate: AnyObject {
     func onUnityCoreMLResult(array:MLMultiArray)
@@ -16,23 +18,55 @@ public protocol UnityCoreMLResultDelegate: AnyObject {
 
 public struct UnityCoreML {
     
-    private let model: VNCoreMLModel
     public var delegate: UnityCoreMLResultDelegate?
+    public var scaleOption: VNImageCropAndScaleOption = .centerCrop
+    
+    private var model: VNCoreMLModel?
     
     init() {
-        guard let model = try? VNCoreMLModel(for: DeepLabV3().model) else {
+    }
+    
+    /** Load *.mlmodel file
+     */
+    public mutating func loadModel(_ url: URL) {
+        guard let mlmodel = try? MLModel(contentsOf: url),
+            let model = try? VNCoreMLModel(for: mlmodel) else {
             fatalError()
         }
         self.model = model
+        print("model loaded: ", url)
     }
     
-    public func predict(_ url: URL) {
-        print("process image: ", url)
+    /** Predict from image url
+     */
+    public func predict(url: URL) {
+        let handler = VNImageRequestHandler(url: url)
+        self.predict(handler: handler)
+    }
+
+    /** Predict from raw image buffer (for Unity plugin)
+     */
+    public func predict(texture: MTLTexture) {
         
-        let request = VNCoreMLRequest(model: self.model, completionHandler: onVisionRequestComplete)
-        request.imageCropAndScaleOption = .centerCrop
+        // https://ringsbell.blog.fc2.com/blog-entry-1319.html
+        guard let image = CIImage(mtlTexture: texture, options: nil) else {
+            print("texture could not loaded")
+            return
+        }
         
-        let handler = VNImageRequestHandler(url: url, options: [:])
+        let handler = VNImageRequestHandler(ciImage: image)
+        self.predict(handler: handler)
+    }
+    
+    private func predict(handler: VNImageRequestHandler) {
+        guard let model = self.model else {
+            print("model is not loaded")
+            return
+        }
+        
+        let request = VNCoreMLRequest(model: model, completionHandler: self.onVisionRequestComplete)
+        request.imageCropAndScaleOption = self.scaleOption
+        
         try? handler.perform([request])
     }
     

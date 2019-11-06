@@ -23,6 +23,7 @@ class ViewController: NSViewController {
         
         self.resultImageView.alphaValue = 0.5
         
+        unity.loadModel(DeepLabV3.urlOfModelInThisBundle)
         unity.delegate = self
     }
 
@@ -33,7 +34,9 @@ class ViewController: NSViewController {
     }
     
     func processImage(_ url: URL) {
-        unity.predict(url)
+        unity.predict(url: url)
+//        unity.predict(metalFileUrl: url)
+        
         self.sourceImageView.image = NSImage(contentsOf: url)
     }
 

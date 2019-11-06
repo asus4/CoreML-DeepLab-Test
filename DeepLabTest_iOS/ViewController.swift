@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        unity.loadModel(DeepLabV3.urlOfModelInThisBundle)
         unity.delegate = self
     }
 
@@ -34,7 +36,9 @@ class ViewController: UIViewController {
     }
     
     func processImage(_ url: URL) {
-        unity.predict(url)
+//        unity.predict(url: url)
+        unity.predict(metalFileUrl: url)
+
         
         guard let data = try? Data(contentsOf: url, options: .mappedIfSafe) else {
             return
