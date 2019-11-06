@@ -16,14 +16,14 @@ class ViewController: NSViewController {
     @IBOutlet weak var sourceImageView: NSImageView!
     @IBOutlet weak var resultImageView: NSImageView!
     
-    var unityCoreML = UnityCoreML()
+    var unity = UnityCoreML()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.resultImageView.alphaValue = 0.5
         
-        unityCoreML.delegate = self
+        unity.delegate = self
     }
 
     override var representedObject: Any? {
@@ -33,10 +33,7 @@ class ViewController: NSViewController {
     }
     
     func processImage(_ url: URL) {
-        print("process image", url)
-        
-        unityCoreML.predict(url)
-        
+        unity.predict(url)
         self.sourceImageView.image = NSImage(contentsOf: url)
     }
 
@@ -63,9 +60,7 @@ class ViewController: NSViewController {
 
 extension ViewController: UnityCoreMLResultDelegate {
     public func onUnityCoreMLResult(array:MLMultiArray) {
-        print("on unity coreml result")
-        
-        guard let image = UnityCoreML.arrayToCGImage(array) else {
+        guard let image = ColorTables.toDeepLabV3(array, width: 513, height: 513) else {
             return
         }
         

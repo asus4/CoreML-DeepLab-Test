@@ -17,17 +17,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var sourceImageView: UIImageView!
     @IBOutlet weak var resultImageView: UIImageView!
     
-    var model: VNCoreMLModel!
+    var unity = UnityCoreML()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let model = (try? VNCoreMLModel(for: DeepLabV3().model)) else {
-            // Could not load MLModel
-            // Check "FCRN.mlmodel" exists in your project
-            fatalError()
-        }
-        self.model = model
+        unity.delegate = self
     }
 
     @IBAction func onLoadImage(_ sender: Any) {
@@ -40,58 +34,12 @@ class ViewController: UIViewController {
     }
     
     func processImage(_ url: URL) {
-        print("process image", url)
-            
-            
-        let request = VNCoreMLRequest(model: self.model, completionHandler: onVisionRequestComplete)
-        request.imageCropAndScaleOption = .centerCrop
-            
-        let handler = VNImageRequestHandler(url: url, options: [:])
-        try? handler.perform([request])
-            
+        unity.predict(url)
+        
         guard let data = try? Data(contentsOf: url, options: .mappedIfSafe) else {
             return
         }
         self.sourceImageView.image = UIImage(data: data)
-    }
-    
-    private func onVisionRequestComplete(request: VNRequest, error: Error?) {
-        
-        guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
-              let depth = observations.first?.featureValue.multiArrayValue else {
-            return
-        }
-        
-        //
-        let width = 513
-        let height = 513
-        var data: [UInt8] = [UInt8](repeating: 255, count: width * height * 4)
-        for y in 0 ..< height {
-            for x in 0 ..< width {
-                let i = y * width + x
-                let table = ColorTables.DeepLabV3[depth[i].intValue]
-                data[i * 4 + 0] = table[0]
-                data[i * 4 + 1] = table[1]
-                data[i * 4 + 2] = table[2]
-                data[i * 4 + 3] = 255
-            }
-        }
-        
-        data.withUnsafeBytes { ptr in
-            let context = CGContext(data: UnsafeMutableRawPointer(mutating: ptr.baseAddress!),
-                                    width: width,
-                                    height: height,
-                                    bitsPerComponent: 8,
-                                    bytesPerRow: width * 4,
-                                    space: CGColorSpaceCreateDeviceRGB(),
-                                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
-            guard let image = context?.makeImage() else  {
-                print("no image")
-                return
-            }
-            self.resultImageView.image = UIImage(cgImage: image)
-        }
-        
     }
   
 }
@@ -116,4 +64,16 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         picker.dismiss(animated: true)
   }
 }
+
+
+extension ViewController: UnityCoreMLResultDelegate {
+    public func onUnityCoreMLResult(array:MLMultiArray) {
+        guard let image = ColorTables.toDeepLabV3(array, width: 513, height: 513) else {
+            return
+        }
+        
+        self.resultImageView.image = UIImage(cgImage: image)
+    }
+}
+
 

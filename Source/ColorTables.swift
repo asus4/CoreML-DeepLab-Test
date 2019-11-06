@@ -11,7 +11,7 @@ import CoreML
 import Vision
 
 
-struct ColorTables {
+public struct ColorTables {
 
     //https://github.com/tensorflow/models/blob/master/research/deeplab/utils/get_dataset_colormap.py
 
@@ -168,6 +168,37 @@ struct ColorTables {
         [102, 255, 0],
         [92, 0, 255],
     ]
+    
+    public static func toDeepLabV3(_ arr: MLMultiArray, width: Int, height: Int) -> CGImage? {
+        var data: [UInt8] = [UInt8](repeating: 255, count: width * height * 4)
+        for y in 0 ..< height {
+            for x in 0 ..< width {
+                let i = y * width + x
+                let table = ColorTables.DeepLabV3[arr[i].intValue]
+                data[i * 4 + 0] = table[0]
+                data[i * 4 + 1] = table[1]
+                data[i * 4 + 2] = table[2]
+                data[i * 4 + 3] = 255
+            }
+        }
+        
+        return toCGImage(data, width: width, height: height)
+    }
+    
+    private static func toCGImage(_ data: [UInt8], width: Int, height: Int) -> CGImage? {
+        // Try to get image
+        var image: CGImage?
+        data.withUnsafeBytes { ptr in
+            let context = CGContext(data: UnsafeMutableRawPointer(mutating: ptr.baseAddress!),
+                                    width: width,
+                                    height: height,
+                                    bitsPerComponent: 8,
+                                    bytesPerRow: width * 4,
+                                    space: CGColorSpaceCreateDeviceRGB(),
+                                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
+            image = context?.makeImage()
+        }
+        return image
+    }
+    
 }
-
-

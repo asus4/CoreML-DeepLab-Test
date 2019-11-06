@@ -10,13 +10,13 @@
 import CoreML
 import Vision
 
-protocol UnityCoreMLResultDelegate: AnyObject {
+public protocol UnityCoreMLResultDelegate: AnyObject {
     func onUnityCoreMLResult(array:MLMultiArray)
 }
 
-struct UnityCoreML {
+public struct UnityCoreML {
     
-    let model: VNCoreMLModel
+    private let model: VNCoreMLModel
     public var delegate: UnityCoreMLResultDelegate?
     
     init() {
@@ -27,6 +27,8 @@ struct UnityCoreML {
     }
     
     public func predict(_ url: URL) {
+        print("process image: ", url)
+        
         let request = VNCoreMLRequest(model: self.model, completionHandler: onVisionRequestComplete)
         request.imageCropAndScaleOption = .centerCrop
         
@@ -46,36 +48,5 @@ struct UnityCoreML {
             self.delegate?.onUnityCoreMLResult(array: depth)
             return
         }
-    }
-    
-    public static func arrayToCGImage(_ arr: MLMultiArray) -> CGImage? {
-        //
-        let width = 513
-        let height = 513
-        var data: [UInt8] = [UInt8](repeating: 255, count: width * height * 4)
-        for y in 0 ..< height {
-            for x in 0 ..< width {
-                let i = y * width + x
-                let table = ColorTables.DeepLabV3[arr[i].intValue]
-                data[i * 4 + 0] = table[0]
-                data[i * 4 + 1] = table[1]
-                data[i * 4 + 2] = table[2]
-                data[i * 4 + 3] = 255
-            }
-        }
-        
-        // Try to get image
-        var image: CGImage?
-        data.withUnsafeBytes { ptr in
-            let context = CGContext(data: UnsafeMutableRawPointer(mutating: ptr.baseAddress!),
-                                    width: width,
-                                    height: height,
-                                    bitsPerComponent: 8,
-                                    bytesPerRow: width * 4,
-                                    space: CGColorSpaceCreateDeviceRGB(),
-                                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
-            image = context?.makeImage()
-        }
-        return image
     }
 }
