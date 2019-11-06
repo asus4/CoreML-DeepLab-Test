@@ -21,6 +21,8 @@
 		787C4BCE2371DC8600D2CAD8 /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 787C4B992371C16B00D2CAD8 /* DeepLabV3.mlmodel */; };
 		787C4BD12371DDF400D2CAD8 /* ColorTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787C4BD02371DDF400D2CAD8 /* ColorTables.swift */; };
 		787C4BD22371DDF400D2CAD8 /* ColorTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787C4BD02371DDF400D2CAD8 /* ColorTables.swift */; };
+		78B054372372D06E003B6B99 /* UnityCoreML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B054362372D06E003B6B99 /* UnityCoreML.swift */; };
+		78B054382372D07C003B6B99 /* UnityCoreML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B054362372D06E003B6B99 /* UnityCoreML.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,7 @@
 		787C4BC82371D6AB00D2CAD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		787C4BCA2371D6AB00D2CAD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		787C4BD02371DDF400D2CAD8 /* ColorTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTables.swift; sourceTree = "<group>"; };
+		78B054362372D06E003B6B99 /* UnityCoreML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityCoreML.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				787C4BD02371DDF400D2CAD8 /* ColorTables.swift */,
+				78B054362372D06E003B6B99 /* UnityCoreML.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -219,6 +223,7 @@
 			files = (
 				787C4B9A2371C16C00D2CAD8 /* DeepLabV3.mlmodel in Sources */,
 				787C4B8C2371C03600D2CAD8 /* ViewController.swift in Sources */,
+				78B054372372D06E003B6B99 /* UnityCoreML.swift in Sources */,
 				787C4B8A2371C03600D2CAD8 /* AppDelegate.swift in Sources */,
 				787C4BD12371DDF400D2CAD8 /* ColorTables.swift in Sources */,
 			);
@@ -231,6 +236,7 @@
 				787C4BC12371D6AA00D2CAD8 /* ViewController.swift in Sources */,
 				787C4BBD2371D6AA00D2CAD8 /* AppDelegate.swift in Sources */,
 				787C4BD22371DDF400D2CAD8 /* ColorTables.swift in Sources */,
+				78B054382372D07C003B6B99 /* UnityCoreML.swift in Sources */,
 				787C4BBF2371D6AA00D2CAD8 /* SceneDelegate.swift in Sources */,
 				787C4BCE2371DC8600D2CAD8 /* DeepLabV3.mlmodel in Sources */,
 			);

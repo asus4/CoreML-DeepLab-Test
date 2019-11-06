@@ -16,19 +16,14 @@ class ViewController: NSViewController {
     @IBOutlet weak var sourceImageView: NSImageView!
     @IBOutlet weak var resultImageView: NSImageView!
     
-    var model: VNCoreMLModel!
+    var unityCoreML = UnityCoreML()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.resultImageView.alphaValue = 0.5
         
-        guard let model = (try? VNCoreMLModel(for: DeepLabV3().model)) else {
-            // Could not load MLModel
-            // Check "FCRN.mlmodel" exists in your project
-            fatalError()
-        }
-        self.model = model
+        unityCoreML.delegate = self
     }
 
     override var representedObject: Any? {
@@ -40,13 +35,7 @@ class ViewController: NSViewController {
     func processImage(_ url: URL) {
         print("process image", url)
         
-        
-        let request = VNCoreMLRequest(model: self.model, completionHandler: onVisionRequestComplete)
-        request.imageCropAndScaleOption = .centerCrop
-        
-        let handler = VNImageRequestHandler(url: url, options: [:])
-        try? handler.perform([request])
-        
+        unityCoreML.predict(url)
         
         self.sourceImageView.image = NSImage(contentsOf: url)
     }
@@ -70,47 +59,17 @@ class ViewController: NSViewController {
             
         }
     }
-    
-    private func onVisionRequestComplete(request: VNRequest, error: Error?) {
+}
+
+extension ViewController: UnityCoreMLResultDelegate {
+    public func onUnityCoreMLResult(array:MLMultiArray) {
+        print("on unity coreml result")
         
-        guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
-              let depth = observations.first?.featureValue.multiArrayValue else {
+        guard let image = UnityCoreML.arrayToCGImage(array) else {
             return
         }
         
-        //
-        let width = 513
-        let height = 513
-        var data: [UInt8] = [UInt8](repeating: 255, count: width * height * 4)
-        for y in 0 ..< height {
-            for x in 0 ..< width {
-                let i = y * width + x
-                let table = ColorTables.DeepLabV3[depth[i].intValue]
-                data[i * 4 + 0] = table[0]
-                data[i * 4 + 1] = table[1]
-                data[i * 4 + 2] = table[2]
-                data[i * 4 + 3] = 255
-            }
-        }
-        
-        data.withUnsafeBytes { ptr in
-            let context = CGContext(data: UnsafeMutableRawPointer(mutating: ptr.baseAddress!),
-                                    width: width,
-                                    height: height,
-                                    bitsPerComponent: 8,
-                                    bytesPerRow: width * 4,
-                                    space: CGColorSpaceCreateDeviceRGB(),
-                                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
-            guard let image = context?.makeImage() else  {
-                print("no image")
-                return
-            }
-            self.resultImageView.image = NSImage(cgImage: image, size: NSSize(width: width, height: height))
-        }
-        
+        let size = NSSize(width: image.width, height: image.height)
+        self.resultImageView.image = NSImage(cgImage: image, size: size)
     }
-    
-    
-    
 }
-
