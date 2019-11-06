@@ -13,12 +13,15 @@ import Vision
 
 class ViewController: NSViewController {
     
+    @IBOutlet weak var sourceImageView: NSImageView!
     @IBOutlet weak var resultImageView: NSImageView!
     
     var model: VNCoreMLModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.resultImageView.alphaValue = 0.5
         
         guard let model = (try? VNCoreMLModel(for: DeepLabV3().model)) else {
             // Could not load MLModel
@@ -45,7 +48,7 @@ class ViewController: NSViewController {
         try? handler.perform([request])
         
         
-//        self.resultImageView.image = NSImage(contentsOf: url)
+        self.sourceImageView.image = NSImage(contentsOf: url)
     }
 
     @IBAction func loadButtonClick(_ sender: Any) {

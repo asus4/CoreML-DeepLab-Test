@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		787C4B862371C03600D2CAD8 /* DeepLabTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepLabTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		787C4B862371C03600D2CAD8 /* DeepLabTest_macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepLabTest_macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		787C4B892371C03600D2CAD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		787C4B8B2371C03600D2CAD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		787C4B8D2371C03700D2CAD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 			children = (
 				787C4BCF2371DDC500D2CAD8 /* Source */,
 				787C4B992371C16B00D2CAD8 /* DeepLabV3.mlmodel */,
-				787C4B882371C03600D2CAD8 /* DeepLabTest */,
+				787C4B882371C03600D2CAD8 /* DeepLabTest_macOS */,
 				787C4BBB2371D6AA00D2CAD8 /* DeepLabTest_iOS */,
 				787C4B872371C03600D2CAD8 /* Products */,
 			);
@@ -75,13 +75,13 @@
 		787C4B872371C03600D2CAD8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				787C4B862371C03600D2CAD8 /* DeepLabTest.app */,
+				787C4B862371C03600D2CAD8 /* DeepLabTest_macOS.app */,
 				787C4BBA2371D6A900D2CAD8 /* DeepLabTest_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		787C4B882371C03600D2CAD8 /* DeepLabTest */ = {
+		787C4B882371C03600D2CAD8 /* DeepLabTest_macOS */ = {
 			isa = PBXGroup;
 			children = (
 				787C4B892371C03600D2CAD8 /* AppDelegate.swift */,
@@ -91,7 +91,7 @@
 				787C4B922371C03700D2CAD8 /* Info.plist */,
 				787C4B932371C03700D2CAD8 /* DeepLabTest.entitlements */,
 			);
-			path = DeepLabTest;
+			path = DeepLabTest_macOS;
 			sourceTree = "<group>";
 		};
 		787C4BBB2371D6AA00D2CAD8 /* DeepLabTest_iOS */ = {
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		787C4B852371C03600D2CAD8 /* DeepLabTest */ = {
+		787C4B852371C03600D2CAD8 /* DeepLabTest_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 787C4B962371C03700D2CAD8 /* Build configuration list for PBXNativeTarget "DeepLabTest" */;
+			buildConfigurationList = 787C4B962371C03700D2CAD8 /* Build configuration list for PBXNativeTarget "DeepLabTest_macOS" */;
 			buildPhases = (
 				787C4B822371C03600D2CAD8 /* Sources */,
 				787C4B832371C03600D2CAD8 /* Frameworks */,
@@ -131,9 +131,9 @@
 			);
 			dependencies = (
 			);
-			name = DeepLabTest;
+			name = DeepLabTest_macOS;
 			productName = DeepLabTest;
-			productReference = 787C4B862371C03600D2CAD8 /* DeepLabTest.app */;
+			productReference = 787C4B862371C03600D2CAD8 /* DeepLabTest_macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		787C4BB92371D6A900D2CAD8 /* DeepLabTest_iOS */ = {
@@ -184,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				787C4B852371C03600D2CAD8 /* DeepLabTest */,
+				787C4B852371C03600D2CAD8 /* DeepLabTest_macOS */,
 				787C4BB92371D6A900D2CAD8 /* DeepLabTest_iOS */,
 			);
 		};
@@ -383,17 +383,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DeepLabTest/DeepLabTest.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DeepLabTest_macOS/DeepLabTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 28KUHZR8X3;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DeepLabTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DeepLabTest_macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = asus4.DeepLabTest;
+				PRODUCT_BUNDLE_IDENTIFIER = "asus4.DeepLabTest-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -403,17 +403,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DeepLabTest/DeepLabTest.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DeepLabTest_macOS/DeepLabTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 28KUHZR8X3;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DeepLabTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DeepLabTest_macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = asus4.DeepLabTest;
+				PRODUCT_BUNDLE_IDENTIFIER = "asus4.DeepLabTest-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -472,7 +472,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		787C4B962371C03700D2CAD8 /* Build configuration list for PBXNativeTarget "DeepLabTest" */ = {
+		787C4B962371C03700D2CAD8 /* Build configuration list for PBXNativeTarget "DeepLabTest_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				787C4B972371C03700D2CAD8 /* Debug */,

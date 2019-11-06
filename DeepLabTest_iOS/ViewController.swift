@@ -14,7 +14,8 @@ import Vision
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var resultImage: UIImageView!
+    @IBOutlet weak var sourceImageView: UIImageView!
+    @IBOutlet weak var resultImageView: UIImageView!
     
     var model: VNCoreMLModel!
     
@@ -39,17 +40,19 @@ class ViewController: UIViewController {
     }
     
     func processImage(_ url: URL) {
-            print("process image", url)
+        print("process image", url)
             
             
-            let request = VNCoreMLRequest(model: self.model, completionHandler: onVisionRequestComplete)
-            request.imageCropAndScaleOption = .centerCrop
+        let request = VNCoreMLRequest(model: self.model, completionHandler: onVisionRequestComplete)
+        request.imageCropAndScaleOption = .centerCrop
             
-            let handler = VNImageRequestHandler(url: url, options: [:])
-            try? handler.perform([request])
+        let handler = VNImageRequestHandler(url: url, options: [:])
+        try? handler.perform([request])
             
-            
-    //        self.resultImageView.image = NSImage(contentsOf: url)
+        guard let data = try? Data(contentsOf: url, options: .mappedIfSafe) else {
+            return
+        }
+        self.sourceImageView.image = UIImage(data: data)
     }
     
     private func onVisionRequestComplete(request: VNRequest, error: Error?) {
@@ -86,7 +89,7 @@ class ViewController: UIViewController {
                 print("no image")
                 return
             }
-            self.resultImage.image = UIImage(cgImage: image)
+            self.resultImageView.image = UIImage(cgImage: image)
         }
         
     }
